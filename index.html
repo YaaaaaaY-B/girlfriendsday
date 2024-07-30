@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Girlfriend's Day, Saachi!</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Home</a></li>
+                <li><a href="photos.html">Photos (we need more together)</a></li>
+                <li><a href="Letters.html">Letters</a></li>
+                <li><a href="reasons.html">Reasons</a></li>
+            </ul>
+        </nav>
+    </header>       
+
+    <main>
+        <section id="welcome">
+            <h2>Girlfriend's Day?</h2>   
+        </section>
+        <section id="photoGallery">
+            <h2>Khali lag raha tha isilye muje dekhle</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="1.jpeg" alt="Memorable Photo 1" onclick="openLightbox('1.jpeg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="2.jpeg" alt="Memorable Photo 2" onclick="openLightbox('2.jpeg')">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Lightbox Image">
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f1; /* Very light sage green */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: relative;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #9cbd8c; /* Sage green */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensures nav is on top of other elements */
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #9cbd8c; /* Sage green */
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 15px;
+            display: block;
+            background-color: #9cbd8c; /* Sage green */
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #7b9b6e; /* Darker sage green */
+        }
+
+        /* Main styles */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px; /* Padding to ensure content is not hidden behind the fixed nav */
+        }
+
+        #photoGallery {
+            margin-bottom: 40px;
+        }
+
+        #photoGallery h2 {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            display: inline-block;
+            width: 300px; /* Fixed width for all images */
+            height: 200px; /* Fixed height for all images */
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images cover the box without distortion */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure lightbox is on top */
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            margin: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="photos.html">Photos (we need more together)</a></li>
+                <li><a href="Letters.html">Letters</a></li>
+                <li><a href="reasons.html">Reasons</a></li>
+            </ul>
+        </nav>
+    </header>       
+
+    <main>
+        <section id="photoGallery">
+            <h2>Humare PHOTOS kidr hai 😒</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="3.jpeg" alt="Photo 1" onclick="openLightbox('3.jpeg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo2.jpg" alt="Photo 2" onclick="openLightbox('images/photo2.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo3.jpg" alt="Photo 3" onclick="openLightbox('images/photo3.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo4.jpg" alt="Photo 4" onclick="openLightbox('images/photo4.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo5.jpg" alt="Photo 5" onclick="openLightbox('images/photo5.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo6.jpg" alt="Photo 6" onclick="openLightbox('images/photo6.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo7.jpg" alt="Photo 7" onclick="openLightbox('images/photo7.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo8.jpg" alt="Photo 8" onclick="openLightbox('images/photo8.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo9.jpg" alt="Photo 9" onclick="openLightbox('images/photo9.jpg')">
+                </div>
+                <!-- Add more photos as needed -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Lightbox Image">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
