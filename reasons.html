@@ -101,6 +101,7 @@
             max-width: 600px;
             margin: 0 auto;
             position: relative; /* Relative positioning for button placement */
+            padding-bottom: 60px; /* Ensure space for button */
         }
 
         #quote {
@@ -119,6 +120,9 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
             position: absolute; /* Absolute positioning for button movement */
+            bottom: 10px; /* Positioned at the bottom of the container */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
         }
 
         #generateButton:hover {
@@ -164,6 +168,7 @@
             #generateButton {
                 font-size: 1em;
                 padding: 8px 16px;
+                bottom: 10px; /* Adjust position for mobile */
             }
         }
     </style>
@@ -210,11 +215,11 @@
         let currentQuoteIndex = 0;
     
         const positions = [
-            { left: '500px', top: '100px' },
-            { left: '300px', top: '150px' },
-            { left: '500px', top: '200px' },
-            { left: '700px', top: '250px' },
-            { left: '100px', top: '300px' }
+            { left: '50px', top: 'calc(100% + 10px)' },
+            { left: '200px', top: 'calc(100% + 10px)' },
+            { left: '350px', top: 'calc(100% + 10px)' },
+            { left: '500px', top: 'calc(100% + 10px)' },
+            { left: '650px', top: 'calc(100% + 10px)' }
         ];
     
         let clickCount = 0;
@@ -222,7 +227,7 @@
     
         button.addEventListener('click', function() {
             if (clickCount < 5) {
-                // Move the button to a random position
+                // Move the button to a random position below the quoteContainer
                 const randomIndex = Math.floor(Math.random() * positions.length);
                 const position = positions[randomIndex];
                 button.style.left = position.left;
