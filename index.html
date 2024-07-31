@@ -46,11 +46,11 @@
             overflow: hidden;
         }
 
-        .nav-menu[aria-hidden="true"] {
+        .nav-menu.hidden {
             max-height: 0;
         }
 
-        .nav-menu[aria-hidden="false"] {
+        .nav-menu.show {
             max-height: 500px; /* Adjust based on content height */
         }
 
@@ -223,7 +223,7 @@
     <header>
         <nav>
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
-            <ul class="nav-menu" aria-hidden="true">
+            <ul class="nav-menu hidden" aria-hidden="true">
                 <li><a href="#welcome">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -288,7 +288,8 @@
                 const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
                 navToggle.setAttribute('aria-expanded', !isExpanded);
                 navMenu.classList.toggle('show');
-                navMenu.setAttribute('aria-hidden', isExpanded);
+                navMenu.classList.toggle('hidden');
+                navMenu.setAttribute('aria-hidden', isExpanded ? 'true' : 'false');
             });
         });
     </script>
