@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Girlfriend's Day, Saachi!</title>
     <link rel="stylesheet" href="styles.css">
-<script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <ul class="nav-menu">
                 <li><a href="#welcome">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -41,7 +42,6 @@
         <span class="close" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Lightbox Image">
     </div>
-
     
 </body>
 </html>
