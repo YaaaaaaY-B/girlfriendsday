@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Girlfriend's Day, Saachi!</title>
+    <title>Letter</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f4f1; /* Very light sage green */
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             color: #333;
             margin: 0;
             padding: 0;
@@ -27,14 +27,6 @@
             padding: 10px 0;
         }
 
-        .nav-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5em;
-            color: #fff;
-            cursor: pointer;
-        }
-
         nav ul {
             list-style: none;
             padding: 0;
@@ -42,16 +34,6 @@
             display: flex;
             justify-content: center;
             background-color: #9cbd8c; /* Sage green */
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-        }
-
-        .nav-menu.hidden {
-            max-height: 0;
-        }
-
-        .nav-menu.show {
-            max-height: 500px; /* Adjust based on content height */
         }
 
         nav li {
@@ -64,11 +46,12 @@
             font-size: 1.2em;
             padding: 15px;
             display: block;
+            background-color: #9cbd8c; /* Sage green */
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         }
 
-        nav a:hover, nav a:focus {
+        nav a:hover {
             background-color: #7b9b6e; /* Darker sage green */
         }
 
@@ -79,142 +62,28 @@
             padding-top: 80px; /* Padding to ensure content is not hidden behind the fixed nav */
         }
 
-        #welcome {
-            text-align: center;
-            margin-bottom: 40px;
+        .letter {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            line-height: 1.6; /* Better readability */
         }
 
-        #welcome h2 {
-            font-size: 2em;
-            color: #333;
+        .letter h1, .letter h2 {
+            margin: 0.5rem 0;
         }
 
-        #welcome p {
-            font-size: 1.2em;
-            color: #666;
-        }
-
-        #photoGallery {
-            margin-bottom: 40px;
-        }
-
-        #photoGallery h2 {
-            font-size: 2em;
-            color: #333;
-            text-align: center;
-        }
-
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            display: inline-block;
-            width: 300px; /* Fixed width for all images */
-            height: 200px; /* Fixed height for all images */
-            overflow: hidden; /* Hide any overflow */
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures images cover the box without distortion */
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05); /* Slight zoom effect on hover */
-        }
-
-        /* Lightbox styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000; /* Ensure lightbox is on top */
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 80%;
-            margin: auto;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* Media Queries for Mobile Responsiveness */
+        /* Responsive Design */
         @media screen and (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav li {
-                margin: 5px 0;
-            }
-
             nav a {
-                font-size: 1em;
+                font-size: 1em; /* Adjust font size for smaller screens */
                 padding: 10px;
             }
 
-            main {
-                padding: 10px;
-                padding-top: 80px; /* Adjust if necessary */
-            }
-
-            #welcome h2 {
-                font-size: 1.5em;
-            }
-
-            #welcome p {
-                font-size: 1em;
-            }
-
-            #photoGallery h2 {
-                font-size: 1.5em;
-            }
-
-            .gallery {
-                flex-direction: column;
-            }
-
-            .gallery-item {
-                width: 100%;
-                height: auto;
-            }
-
-            .gallery img {
-                width: 100%;
-                height: auto;
-            }
-
-            .lightbox img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-
-            .close {
-                font-size: 1.5em;
+            .letter h1, .letter h2 {
+                font-size: 1.2em; /* Adjust for smaller screens */
             }
         }
     </style>
@@ -222,76 +91,27 @@
 <body>
     <header>
         <nav>
-            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
-            <ul class="nav-menu hidden" aria-hidden="true">
-                <li><a href="#welcome">Home</a></li>
+            <ul>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
                 <li><a href="reasons.html">Reasons</a></li>
             </ul>
         </nav>
-    </header>       
-
+    </header>
+    
     <main>
-        <section id="welcome">
-            <h2>Girlfriend's Day?</h2>
-        </section>
-        <section id="photoGallery">
-            <h2>Khali lag raha tha isilye muje dekhle</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="1.jpeg" alt="Memorable Photo 1" onclick="openLightbox('1.jpeg')">
-                </div>
-                <div class="gallery-item">
-                    <img src="2.jpeg" alt="Memorable Photo 2" onclick="openLightbox('2.jpeg')">
-                </div>
-            </div>
+        <section class="letter">
+            <h1>Letter</h1>
+            <p>(Hand written nahi hai par jo bhi aya dimag mai woh likha)</p>
+            <h2>Dear shortie</h2>
+            <p>Abh kya hi likhu letter mai, kabhi kuch kiya nahi hai asa sab pheli baar hi kar raha hu. Tu meri girlfriend bani tabse</p>
+            <p>Tu hi hai dimag mai hai uthta hu tabhi bhi tu hi rehti hai sota hu tabhi bhi, pura din hi rehti hai</p>
+            <p>Jab tere saath hota hu pura time tuje hi dekhne ka maan karta hai, jab jaati hai tabhi accha nahi lagta, abhi aur kya hi bolu</p>
+            <h2>I love you Saachi 😊👍</h2>
+            <p>With love</p>
+            <p>Your BHUDDHA</p>
         </section>
     </main>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
-        <span class="close" aria-label="Close lightbox">&times;</span>
-        <img id="lightbox-img" src="" alt="Lightbox Image">
-    </div>
-    
-    <script>
-        // Function to open the lightbox with the specified image source
-        function openLightbox(src) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
-            lightbox.setAttribute('aria-hidden', 'false');
-        }
-
-        // Function to close the lightbox
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            lightbox.setAttribute('aria-hidden', 'true');
-        }
-
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeLightbox();
-            }
-        });
-
-        // Navigation toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-
-            navToggle.addEventListener('click', function() {
-                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-                navToggle.setAttribute('aria-expanded', !isExpanded);
-                navMenu.classList.toggle('show');
-                navMenu.classList.toggle('hidden');
-                navMenu.setAttribute('aria-hidden', isExpanded ? 'true' : 'false');
-            });
-        });
-    </script>
 </body>
 </html>
