@@ -7,12 +7,12 @@
     <style>
         /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f0f4f1; /* Very light sage green */
             color: #333;
             margin: 0;
             padding: 0;
-            padding-top: 60px; /* Padding to avoid content being hidden behind the fixed nav */
+            padding-top: 60px; /* Add padding to the top of the body to prevent content from being covered by the fixed nav */
         }
 
         header {
@@ -25,20 +25,8 @@
             width: 100%;
             background-color: #9cbd8c; /* Sage green */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 1000; /* Ensure nav is on top of other elements */
+            z-index: 1000; /* Ensures nav is on top of other elements */
             padding: 10px 0;
-        }
-
-        nav .nav-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5em;
-            color: #fff;
-            cursor: pointer;
-            display: none; /* Hidden by default, shown on smaller screens */
-            position: absolute;
-            right: 20px;
-            top: 20px;
         }
 
         nav ul {
@@ -48,16 +36,6 @@
             display: flex;
             justify-content: center;
             background-color: #9cbd8c; /* Sage green */
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-        }
-
-        .nav-menu[aria-hidden="true"] {
-            max-height: 0;
-        }
-
-        .nav-menu[aria-hidden="false"] {
-            max-height: 500px; /* Adjust based on content height */
         }
 
         nav li {
@@ -72,13 +50,13 @@
             display: block;
             background-color: #9cbd8c; /* Sage green */
             border-radius: 5px;
-            transition: background-color 0.3s;
         }
 
         nav a:hover {
             background-color: #7b9b6e; /* Darker sage green */
         }
 
+        /* Main styles */
         main {
             padding: 20px;
             max-width: 1200px;
@@ -96,49 +74,47 @@
             margin-bottom: 20px;
         }
 
-        #reasons ul {
-            list-style: none;
-            padding: 0;
+        #quoteContainer {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative; /* Relative positioning for button placement */
         }
 
-        #reasons li {
+        #quote {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        #generateButton {
+            background-color: #9cbd8c; /* Sage green */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             font-size: 1.2em;
-            margin-bottom: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, left 0.3s, top 0.3s; /* Added transitions */
+            position: absolute; /* Button positioning */
         }
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav li {
-                margin: 5px 0; /* Adjust spacing */
-            }
+        #generateButton:hover {
+            background-color: #7b9b6e; /* Darker sage green */
         }
 
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 1em; /* Smaller font size on very small screens */
-                padding: 10px; /* Adjust padding */
-            }
-
-            .nav-toggle {
-                font-size: 1.2em; /* Smaller toggle button */
-            }
+        #generateButton:focus {
+            outline: none;
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-            <ul class="nav-menu" aria-hidden="true">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -150,8 +126,23 @@
     <main>
         <section id="reasons">
             <h2>Reasons Why I Love You</h2>
-            <ul>
-                "You complete me in every way.",
+            <div id="quoteContainer">
+                <p id="quote">Love you, Saachi 😊</p>
+                <button id="generateButton">Click me!</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const fixedQuotes = [
+            "Love you, Saachi 😊",
+            "Aree it moved",
+            "Thoda toh mehnat karna padega.",
+            "Aur eak baar bas."
+        ];
+    
+        const randomQuotes = [
+            "You complete me in every way.",
             "Being with you feels like home.",
             "You are the reason for my smile.",
             "Your love is the melody to my heart.",
@@ -267,19 +258,51 @@
             "I love you more than you know.",
             "You make my life magical.",
             "You are my forever and always."
-            </ul>
-        </section>
-    </main>
-
-    <script>
-        // Toggle navigation for small screens
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        navToggle.addEventListener('click', () => {
-            const isHidden = navMenu.getAttribute('aria-hidden') === 'true';
-            navMenu.setAttribute('aria-hidden', String(!isHidden));
+        ];
+    
+    
+        const button = document.getElementById('generateButton');
+        const quoteElement = document.getElementById('quote');
+        let currentQuoteIndex = 0;
+    
+        const positions = [
+            { left: '500px', top: '100px' },
+            { left: '300px', top: '150px' },
+            { left: '500px', top: '200px' },
+            { left: '700px', top: '250px' },
+            { left: '100px', top: '300px' }
+        ];
+    
+        let clickCount = 0;
+    
+        button.addEventListener('click', function() {
+            if (clickCount < 5) {
+                // Move the button to one of the predefined positions
+                const position = positions[clickCount];
+                button.style.left = position.left;
+                button.style.top = position.top;
+                clickCount++;
+            } else {
+                // Keep the button at the last position
+                const lastPosition = positions[4]; // Last position in the array
+                button.style.left = lastPosition.left;
+                button.style.top = lastPosition.top;
+            }
+    
+            // Generate a quote
+            if (currentQuoteIndex < fixedQuotes.length) {
+                quoteElement.textContent = fixedQuotes[currentQuoteIndex];
+                currentQuoteIndex++;
+            } else {
+                const randomIndex = Math.floor(Math.random() * randomQuotes.length);
+                quoteElement.textContent = randomQuotes[randomIndex];
+                currentQuoteIndex = 0; // Reset to cycle through fixed quotes again
+            }
         });
+    
+        // Initialize with a fixed quote
+        quoteElement.textContent = fixedQuotes[currentQuoteIndex];
     </script>
+    
 </body>
 </html>
