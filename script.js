@@ -10,4 +10,9 @@ function closeLightbox() {
     lightbox.style.display = 'none';
 }
 
-
+// Close lightbox when clicking outside the image
+document.getElementById('lightbox').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeLightbox();
+    }
+});
