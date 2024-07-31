@@ -35,17 +35,18 @@
             display: flex;
             justify-content: center;
             background-color: #9cbd8c; /* Sage green */
+            flex-wrap: wrap; /* Allows items to wrap on smaller screens */
         }
 
         nav li {
-            margin: 0 15px;
+            margin: 0 10px; /* Adjusted for smaller screens */
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.2em;
-            padding: 15px;
+            font-size: 1em; /* Adjusted for smaller screens */
+            padding: 10px; /* Adjusted for smaller screens */
             display: block;
             background-color: #9cbd8c; /* Sage green */
             border-radius: 5px;
@@ -68,7 +69,7 @@
         }
 
         #photoGallery h2 {
-            font-size: 2em;
+            font-size: 1.5em; /* Adjusted for smaller screens */
             color: #333;
             text-align: center;
         }
@@ -83,7 +84,8 @@
         .gallery-item {
             position: relative;
             display: inline-block;
-            width: 300px; /* Fixed width for all images */
+            width: 100%; /* Full width on small screens */
+            max-width: 300px; /* Limit width on larger screens */
             height: 200px; /* Fixed height for all images */
             overflow: hidden; /* Hide any overflow */
         }
@@ -127,6 +129,31 @@
             font-size: 2em;
             color: #fff;
             cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                margin: 5px 0; /* Adjust spacing */
+            }
+
+            #photoGallery h2 {
+                font-size: 1.2em; /* Smaller font size on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 100%; /* Full width on very small screens */
+            }
+
+            .close {
+                font-size: 1.5em; /* Smaller close button on very small screens */
+            }
         }
     </style>
 </head>
