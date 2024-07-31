@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f4f1; /* Very light sage green */
@@ -18,22 +19,35 @@ nav {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000; /* Ensures nav is on top of other elements */
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul {
+.nav-toggle {
+    display: none;
+    font-size: 2em;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Navigation Menu */
+.nav-menu {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
-    background-color: #9cbd8c; /* Sage green */
+    flex-direction: row;
 }
 
-nav li {
+.nav-menu li {
     margin: 0 15px;
 }
 
-nav a {
+.nav-menu a {
     color: #fff;
     text-decoration: none;
     font-size: 1.2em;
@@ -43,150 +57,42 @@ nav a {
     border-radius: 5px;
 }
 
-nav a:hover {
+.nav-menu a:hover {
     background-color: #7b9b6e; /* Darker sage green */
-}
-
-main {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 80px; /* Padding to ensure content is not hidden behind the fixed nav */
-}
-
-#welcome {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-#welcome h2 {
-    font-size: 2em;
-    color: #333;
-}
-
-#welcome p {
-    font-size: 1.2em;
-    color: #666;
-}
-
-#photoGallery {
-    margin-bottom: 40px;
-}
-
-#photoGallery h2 {
-    font-size: 2em;
-    color: #333;
-    text-align: center;
-}
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.gallery-item {
-    position: relative;
-    display: inline-block;
-    width: 300px; /* Fixed width for all images */
-    height: 200px; /* Fixed height for all images */
-    overflow: hidden; /* Hide any overflow */
-}
-
-.gallery img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures images cover the box without distortion */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-}
-
-/* Lightbox styles */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure lightbox is on top */
-}
-
-.lightbox img {
-    max-width: 90%;
-    max-height: 80%;
-    margin: auto;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 2em;
-    color: #fff;
-    cursor: pointer;
 }
 
 /* Media Queries for Mobile Responsiveness */
 @media screen and (max-width: 600px) {
-    nav ul {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
         flex-direction: column;
+        width: 100%;
+        background-color: #9cbd8c; /* Sage green */
+        position: absolute;
+        top: 50px; /* Adjust based on header height */
+        left: 0;
+        z-index: 1000; /* Ensure menu is on top */
     }
 
-    nav li {
-        margin: 5px 0;
+    .nav-menu.show {
+        display: flex;
     }
 
-    nav a {
+    .nav-menu li {
+        margin: 0;
+    }
+
+    .nav-menu a {
         font-size: 1em;
         padding: 10px;
+        border-bottom: 1px solid #7b9b6e; /* Optional separator */
     }
 
-    main {
-        padding: 10px;
-        padding-top: 80px; /* Adjust if necessary */
-    }
-
-    #welcome h2 {
-        font-size: 1.5em;
-    }
-
-    #welcome p {
-        font-size: 1em;
-    }
-
-    #photoGallery h2 {
-        font-size: 1.5em;
-    }
-
-    .gallery {
-        flex-direction: column;
-    }
-
-    .gallery-item {
-        width: 100%;
-        height: auto;
-    }
-
-    .gallery img {
-        width: 100%;
-        height: auto;
-    }
-
-    .lightbox img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .close {
-        font-size: 1.5em;
+    .nav-menu a:last-child {
+        border-bottom: none;
     }
 }
