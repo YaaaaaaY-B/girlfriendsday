@@ -27,6 +27,15 @@
             padding: 10px 0;
         }
 
+        .nav-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #fff;
+            cursor: pointer;
+            display: none; /* Hide toggle button by default */
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
@@ -34,6 +43,16 @@
             display: flex;
             justify-content: center;
             background-color: #9cbd8c; /* Sage green */
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .nav-menu[aria-hidden="true"] {
+            max-height: 0;
+        }
+
+        .nav-menu[aria-hidden="false"] {
+            max-height: 500px; /* Adjust based on content height */
         }
 
         nav li {
@@ -46,12 +65,11 @@
             font-size: 1.2em;
             padding: 15px;
             display: block;
-            background-color: #9cbd8c; /* Sage green */
             border-radius: 5px;
             transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         }
 
-        nav a:hover {
+        nav a:hover, nav a:focus {
             background-color: #7b9b6e; /* Darker sage green */
         }
 
@@ -75,10 +93,23 @@
             margin: 0.5rem 0;
         }
 
-        /* Responsive Design */
+        /* Media Queries for Mobile Responsiveness */
         @media screen and (max-width: 600px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                max-height: 0;
+            }
+
+            nav li {
+                margin: 5px 0;
+            }
+
             nav a {
-                font-size: 1em; /* Adjust font size for smaller screens */
+                font-size: 1em;
                 padding: 10px;
             }
 
@@ -91,7 +122,8 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+            <ul class="nav-menu" aria-hidden="true">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -113,5 +145,42 @@
             <p>Your BHUDDHA</p>
         </section>
     </main>
+
+    <script>
+        // Function to open the lightbox with the specified image source
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            lightbox.setAttribute('aria-hidden', 'false');
+        }
+
+        // Function to close the lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            lightbox.setAttribute('aria-hidden', 'true');
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Navigation toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            navToggle.addEventListener('click', function() {
+                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+                navMenu.setAttribute('aria-hidden', isExpanded);
+            });
+        });
+    </script>
 </body>
 </html>
