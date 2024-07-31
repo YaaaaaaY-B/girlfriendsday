@@ -47,14 +47,6 @@
             overflow: hidden;
         }
 
-        .nav-menu[aria-hidden="true"] {
-            max-height: 0;
-        }
-
-        .nav-menu[aria-hidden="false"] {
-            max-height: 500px; /* Adjust based on content height */
-        }
-
         nav li {
             margin: 0 15px;
         }
@@ -71,6 +63,14 @@
 
         nav a:hover, nav a:focus {
             background-color: #7b9b6e; /* Darker sage green */
+        }
+
+        .nav-menu.collapsed {
+            max-height: 0;
+        }
+
+        .nav-menu.expanded {
+            max-height: 500px; /* Adjust based on content height */
         }
 
         main {
@@ -93,7 +93,7 @@
             margin: 0.5rem 0;
         }
 
-        /* Media Queries for Mobile Responsiveness */
+        /* Responsive Design */
         @media screen and (max-width: 600px) {
             .nav-toggle {
                 display: block;
@@ -101,7 +101,7 @@
 
             nav ul {
                 flex-direction: column;
-                max-height: 0;
+                overflow: hidden; /* Hide overflow when collapsed */
             }
 
             nav li {
@@ -123,7 +123,7 @@
     <header>
         <nav>
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
-            <ul class="nav-menu" aria-hidden="true">
+            <ul class="nav-menu collapsed" aria-hidden="true">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -147,36 +147,15 @@
     </main>
 
     <script>
-        // Function to open the lightbox with the specified image source
-        function openLightbox(src) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
-            lightbox.setAttribute('aria-hidden', 'false');
-        }
-
-        // Function to close the lightbox
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            lightbox.setAttribute('aria-hidden', 'true');
-        }
-
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeLightbox();
-            }
-        });
-
         // Navigation toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
             const navToggle = document.querySelector('.nav-toggle');
             const navMenu = document.querySelector('.nav-menu');
 
             navToggle.addEventListener('click', function() {
-                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                const isExpanded = navMenu.classList.contains('expanded');
+                navMenu.classList.toggle('expanded', !isExpanded);
+                navMenu.classList.toggle('collapsed', isExpanded);
                 navToggle.setAttribute('aria-expanded', !isExpanded);
                 navMenu.setAttribute('aria-hidden', isExpanded);
             });
