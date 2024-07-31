@@ -1,18 +1,8 @@
-function openLightbox(src) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = src;
-    lightbox.style.display = 'flex';
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'none';
-}
-
-// Close lightbox when clicking outside the image
-document.getElementById('lightbox').addEventListener('click', function(event) {
-    if (event.target === this) {
-        closeLightbox();
-    }
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+    });
 });
