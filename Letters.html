@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter</title>
     <style>
-        /* General styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
             color: #333;
             margin: 0;
             padding: 0;
-            padding-top: 60px; /* Padding to avoid content being hidden behind the fixed nav */
         }
 
         header {
@@ -25,20 +23,8 @@
             width: 100%;
             background-color: #9cbd8c; /* Sage green */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 1000; /* Ensure nav is on top of other elements */
+            z-index: 1000; /* Ensures nav is on top of other elements */
             padding: 10px 0;
-        }
-
-        nav .nav-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5em;
-            color: #fff;
-            cursor: pointer;
-            display: none; /* Hidden by default, shown on smaller screens */
-            position: absolute;
-            right: 20px;
-            top: 20px;
         }
 
         nav ul {
@@ -48,16 +34,6 @@
             display: flex;
             justify-content: center;
             background-color: #9cbd8c; /* Sage green */
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-        }
-
-        .nav-menu[aria-hidden="true"] {
-            max-height: 0;
-        }
-
-        .nav-menu[aria-hidden="false"] {
-            max-height: 500px; /* Adjust based on content height */
         }
 
         nav li {
@@ -72,7 +48,6 @@
             display: block;
             background-color: #9cbd8c; /* Sage green */
             border-radius: 5px;
-            transition: background-color 0.3s;
         }
 
         nav a:hover {
@@ -92,32 +67,17 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             padding: 1rem;
+            line-height: 1.6; /* Better readability */
         }
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav li {
-                margin: 5px 0; /* Adjust spacing */
-            }
+        .letter h1, .letter h2 {
+            margin: 0.5rem 0;
         }
 
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 1em; /* Smaller font size on very small screens */
-                padding: 10px; /* Adjust padding */
-            }
-
-            .nav-toggle {
-                font-size: 1.2em; /* Smaller toggle button */
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            .letter h1, .letter h2 {
+                font-size: 1.2em; /* Adjust for smaller screens */
             }
         }
     </style>
@@ -125,8 +85,7 @@
 <body>
     <header>
         <nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-            <ul class="nav-menu" aria-hidden="true">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -139,25 +98,14 @@
         <section class="letter">
             <h1>Letter</h1>
             <p>(Hand written nahi hai par jo bhi aya dimag mai woh likha)</p>
-            <h2>Dear shortie,</h2>
-            <p>Abh kya hi likhu letter mai, kabhi kuch kiya nahi hai asa sab pheli baar hi kar raha hu. Tu meri girlfriend bani tabse.</p>
-            <p>Tu hi hai dimag mai hai, uthta hu tabhi bhi tu hi rehti hai, sota hu tabhi bhi, pura din hi rehti hai.</p>
-            <p>Jab tere saath hota hu, pura time tuje hi dekhne ka maan karta hai, jab jaati hai tabhi accha nahi lagta, abhi aur kya hi bolu.</p>
-            <p>I love you, Saachi 😊👍</p>
-            <h2>With love,</h2>
-            <h2>Your BHUDDHA</h2>
+            <h2>Dear shortie</h2>
+            <p>Abh kya hi likhu letter mai, kabhi kuch kiya nahi hai asa sab pheli baar hi kar raha hu. Tu meri girlfriend bani tabse</p>
+            <p>Tu hi hai dimag mai hai uthta hu tabhi bhi tu hi rehti hai sota hu tabhi bhi, pura din hi rehti hai</p>
+            <p>Jab tere saath hota hu pura time tuje hi dekhne ka maan karta hai, jab jaati hai tabhi accha nahi lagta, abhi aur kya hi bolu</p>
+            <h2>I love you Saachi 😊👍</h2>
+            <p>With love</p>
+            <p>Your BHUDDHA</p>
         </section>
     </main>
-
-    <script>
-        // Toggle navigation for small screens
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        navToggle.addEventListener('click', () => {
-            const isHidden = navMenu.getAttribute('aria-hidden') === 'true';
-            navMenu.setAttribute('aria-hidden', String(!isHidden));
-        });
-    </script>
 </body>
 </html>
