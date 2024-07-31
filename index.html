@@ -10,8 +10,8 @@
 <body>
     <header>
         <nav>
-            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-            <ul class="nav-menu">
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+            <ul class="nav-menu" aria-hidden="true">
                 <li><a href="#welcome">Home</a></li>
                 <li><a href="photos.html">Photos (we need more together)</a></li>
                 <li><a href="Letters.html">Letters</a></li>
@@ -22,7 +22,8 @@
 
     <main>
         <section id="welcome">
-            <h2>Girlfriend's Day?</h2>   
+            <h2>Girlfriend's Day?</h2>
+            <p>Celebrating the amazing journey we have together.</p>
         </section>
         <section id="photoGallery">
             <h2>Khali lag raha tha isilye muje dekhle</h2>
@@ -38,8 +39,8 @@
     </main>
 
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox" class="lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+        <span class="close" aria-label="Close lightbox">&times;</span>
         <img id="lightbox-img" src="" alt="Lightbox Image">
     </div>
     
